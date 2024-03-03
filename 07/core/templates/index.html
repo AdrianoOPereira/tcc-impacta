@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <h1 style=color:MediumSeaGreen;>Cadastro de Clientes</h1>
+
+
+        <ul>
+            {% for pessoa in pessoas %}
+            <li>
+                {{ pessoa.id}} - {{ pessoa.nome}} 
+                <a href="{% url 'editar' pessoa.id %}">Editar</a>
+                <a href="{% url 'delete' pessoa.id %}">Deletar</a>
+            </li>
+            {% endfor %}
+        </li>
+
+        <form action="{% url "salvar" %}" method='POST'>
+            {% csrf_token %}
+
+            <!--Nome-->
+            <h3>Escreva o nome</h3>
+            <div>
+
+                <input type="text" name="nome">
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </body>
+</html>
